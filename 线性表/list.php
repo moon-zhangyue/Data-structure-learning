@@ -14,7 +14,7 @@ class ListNode
 class LinkedList
 {
     private $_firstNode = NULL;
-    private $_totalNodes = 0;
+    private $_totalNode = 0;
 
     public function insert(string $data = NULL)
     {
@@ -42,6 +42,8 @@ class LinkedList
             $currentNode = $currentNode->next;
         }
     }
+
+    
 }
 
 $linked_list = new LinkedList();

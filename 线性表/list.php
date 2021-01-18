@@ -43,7 +43,109 @@ class LinkedList
         }
     }
 
-    
+    //在第一个节点前插入
+    public function insertAtFirst(string $data = NULL)
+    {
+        $newNode = new ListNode($data);
+        if ($this->_firstNode === NULL) {
+            $this->_firstNode = &$newNode;
+        } else {
+            $currentFirstNode = $this->_firstNode;
+            $this->_firstNode = &$newNode;
+            $newNode->next    = $currentFirstNode;
+        }
+        $this->_totalNode++;
+        return TRUE;
+    }
+
+    //在特殊节点前插入
+    public function insertBefore(string $data = NULL, string $query = NULL)
+    {
+        $newNode = new ListNode($data);
+        if ($this->_firstNode && $this->_firstNode->data = $query) {
+            $newNode->next    = $this->_firstNode;
+            $this->_firstNode = &$newNode;
+        }
+
+        if ($this->_firstNode !== NULL) {
+            $previous    = NULL;
+            $currentNode = $this->_firstNode;
+            while ($currentNode !== NULL) {
+                if ($currentNode->data === $query) {
+                    $previous->next = &$newNode;
+                    $newNode->next  = $currentNode;
+                    $this->_totalNode++;
+                    break;
+                }
+                $previous    = $currentNode;
+                $currentNode = $currentNode->next;
+            }
+        }
+    }
+
+    //在特定节点后插入
+    public function insertAfter(string $data = NULL, string $query = NULL)
+    {
+        $newNode = new ListNode($data);
+        if ($this->_firstNode !== NULL) {
+            $currentNode = $this->_firstNode;
+            while ($currentNode !== NULL) {
+                if ($currentNode->data === $query) {
+                    $newNode->next     = $currentNode->next;
+                    $currentNode->next = &$newNode;
+                    $this->_totalNode++;
+                    break;
+                }
+                $currentNode = $currentNode->next;
+            }
+        }
+    }
+
+    //链表的反转
+    public function reverse()
+    {
+        if ($this->_firstNode !== NULL) {
+            if ($this->_firstNode->next !== NULL) {
+                $reversedList = NULL;
+                $next         = NULL;
+                $currentNode  = $this->_firstNode;
+                while ($currentNode !== NULL) {
+                    $next              = $currentNode->next;
+                    $currentNode->next = $reversedList;
+                    $reversedList      = $currentNode;
+                    $currentNode       = $next;
+                }
+                $this->_firstNode = $reversedList;
+            }
+        }
+    }
+
+    //获取第N个位置元素
+    public function getNthNode(int $n = 0)
+    {
+        $count = 1;
+        if ($this->_firstNode !== NULL) {
+            $currentNode = $this->_firstNode;
+            while ($currentNode !== NULL) {
+                if ($count === $n) {
+                    return $currentNode;
+                }
+                $count++;
+                $currentNode = $currentNode->next;
+            }
+        }
+    }
+
+    /*
+     * 理解链表的算法复杂度
+        操作	    时间复杂度:最差	事件复杂度:平均
+        在首,尾插入	O(1)	        O(1)
+        在首尾删除	O(1)	        O(1)
+        搜索	    O(n)	        O(n)
+        访问	    O(n)	        O(n)
+     * */
+
+    //双向链表  使用 PHP SplDoublyLinkedList
 }
 
 $linked_list = new LinkedList();

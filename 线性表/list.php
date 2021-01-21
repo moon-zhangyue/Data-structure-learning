@@ -15,6 +15,8 @@ class LinkedList
 {
     private $_firstNode = NULL;
     private $_totalNode = 0;
+    private $_currentNode = NULL;  // 当前节点
+    private $_currentPosition = 0; // 当前位置
 
     public function insert(string $data = NULL)
     {
@@ -146,6 +148,34 @@ class LinkedList
      * */
 
     //双向链表  使用 PHP SplDoublyLinkedList
+
+    #pragram make implements Iterator
+    public function current()
+    {
+        return $this->_currentNode->data;
+    }
+
+    public function next()
+    {
+        $this->_currentPosition++;
+        $this->_currentNode = $this->_currentNode->next;
+    }
+
+    public function key()
+    {
+        return $this->_currentPosition;
+    }
+
+    public function rewind()
+    {
+        $this->_currentPosition = 0;
+        $this->_currentNode     = $this->_firstNode;
+    }
+
+    public function valid()
+    {
+        return $this->_currentNode !== NULL;
+    }
 }
 
 $linked_list = new LinkedList();
@@ -160,3 +190,11 @@ $linked_list->display();
 //返回结果:
 //Total book titles: 4
 //1 2 3 4
+
+
+//foreach ($BookTitles as $title) {
+//    echo $title . "\n";
+//}
+//for ($BookTitles->rewind(); $BookTitles->valid(); $BookTitles->next()) {
+//    echo $BookTitles->current() . "\n";
+//}

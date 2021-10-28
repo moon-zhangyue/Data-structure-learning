@@ -1,5 +1,7 @@
 <?php
 
+//模拟链表
+
 class ListNode
 {
     public $data = NULL;

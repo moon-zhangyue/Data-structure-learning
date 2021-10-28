@@ -62,9 +62,9 @@ class SingleLinkedList {
    public function insert($item, $new) {
        $newNode = new Node($new);
        $current = $this->find($item);
-        $newNode->next = $current->next;
-      $current->next = $newNode;
-      return true;
+       $newNode->next = $current->next;
+       $current->next = $newNode;
+       return true;
    }
 
     // 更新节点

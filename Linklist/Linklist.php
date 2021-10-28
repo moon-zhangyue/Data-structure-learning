@@ -64,19 +64,17 @@ class Linklist
         $this->size++;
     }
 
-    /**尾插法
+    /**
+     * 尾插法
      *
      * @param $value
      */
     public function addLast($value)
     {
-
         $this->add($this->size, $value);
-
     }
 
-
-    /***
+    /**
      * 编辑
      *
      * @param $index
@@ -95,7 +93,6 @@ class Linklist
                 $prev->val = $value;
             $prev = $prev->next;
         }
-
     }
 
     /**

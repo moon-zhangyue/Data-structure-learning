@@ -4,6 +4,7 @@
  * Author: SpiRit-Moon
  * Time: 2021/10/27 16:42
  * Module: LinkListQueue.php
+ * 链表实现队列
  */
 require 'Linklist.php';
 
